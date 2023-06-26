@@ -10,7 +10,6 @@ const refs = {
 	loadMoreBtn: document.querySelector('.load-more'),
 };
 
-console.log(refs.loadMoreBtn);
 
 refs.searchForm.addEventListener('submit', handlerForm);
 refs.loadMoreBtn.addEventListener('click', onLoadMore);
@@ -20,12 +19,14 @@ let photoSearchApi;
 let openPage = 1;
 let loadHitsPhoto = 0;
 let totalHitsPhoto = 0;
+let nameSearch = '';
+
 
 
 async function handlerForm(e){
 	e.preventDefault();
 	page_n = 1;
-	let nameSearch = e.target.searchQuery.value.trim();
+	nameSearch = e.target.searchQuery.value.trim();
 	photoSearchApi = await photoSearch(nameSearch, page_n);
 	let {hits, totalHits} = photoSearchApi;
 	totalHitsPhoto = totalHits;
@@ -78,6 +79,7 @@ async function photoSearch(search, page_n) {
 }
 
 async function loadNextPage() {
+			
 	try {
 		if (openPage < totalHitsPhoto) {
 			openPage += loadHitsPhoto;
@@ -96,6 +98,7 @@ async function loadNextPage() {
 		lightbox.refresh();
 		} else {
 		document.querySelector('.load-more').classList.add('none');
+		console.log(page_n);
 	}
 	} catch (error) {
 	Notify.failure(`${error.message}`);
