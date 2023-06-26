@@ -1,7 +1,7 @@
 // import refs from './js/refs';
 import galleryMarkup from './js/markup';
 import SimpleLightbox from "simplelightbox";
-import 'simplelightbox/dist/simple-lightbox.min.css';
+import "simplelightbox/dist/simple-lightbox.min.css";
 import { Notify } from 'notiflix';
 
 const refs = {
@@ -41,7 +41,7 @@ async function handlerForm(e){
 		openPage = hits.length;
 		if (openPage < totalHits) {
 			openPage += hits.length;
-			imgup = await galleryMarkup(photoSearchApiArrey);
+			let imgup = await galleryMarkup(photoSearchApiArrey);
 			refs.container.innerHTML = imgup;
 			document.querySelector('.load-more').classList.remove('none');
 
