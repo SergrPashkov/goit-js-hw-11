@@ -25,7 +25,7 @@ let totalHitsPhoto = 0;
 async function handlerForm(e){
 	e.preventDefault();
 	page_n = 1;
-	nameSearch = e.target.searchQuery.value.trim();
+	let nameSearch = e.target.searchQuery.value.trim();
 	photoSearchApi = await photoSearch(nameSearch, page_n);
 	let {hits, totalHits} = photoSearchApi;
 	totalHitsPhoto = totalHits;
