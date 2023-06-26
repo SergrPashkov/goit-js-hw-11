@@ -1,8 +1,16 @@
-import refs from './js/refs';
+// import refs from './js/refs';
 import galleryMarkup from './js/markup';
 import SimpleLightbox from "simplelightbox";
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { Notify } from 'notiflix';
+
+const refs = {
+	searchForm: document.querySelector('.search-form'),
+	container: document.querySelector('.gallery'),
+	loadMoreBtn: document.querySelector('.load-more'),
+};
+
+console.log(refs.loadMoreBtn);
 
 refs.searchForm.addEventListener('submit', handlerForm);
 refs.loadMoreBtn.addEventListener('click', onLoadMore);
@@ -48,7 +56,7 @@ async function handlerForm(e){
 		}
 		Notify.success(`Hooray! We found ${totalHits} images.`)
 		document.querySelector('.load-more').classList.remove('none');
-			if (totalHits > 150) {
+			if (totalHits > 40) {
 				refs.loadMoreBtn.classList.remove('isHidden');
 			} 
 		};
@@ -58,7 +66,7 @@ async function photoSearch(search, page_n) {
 	try {
 		const BASE_URL = 'https://pixabay.com';
 		const API_KEY = '36275502-77fa3c8ce0cd0de5f36c14358';
-		const resp = await fetch(`${BASE_URL}/api/?key=${API_KEY}&q=${search}&image_type=photo&orientation=horizontal&safesearch=true&per_page=150&page=${page_n}`)
+		const resp = await fetch(`${BASE_URL}/api/?key=${API_KEY}&q=${search}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${page_n}`)
 		if (!resp.ok) {
 			throw new Error(resp.statusText)
 		}

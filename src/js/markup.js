@@ -10,8 +10,7 @@ export default function galleryMarkup(data) {
         comments,
         downloads,
       }) =>
-        `
-        <div class="photo-card">
+        `<div class="photo-card">
           <a class="photo-card-link" href="${largeImageURL}">
             <img class='photo-card-image' src="${webformatURL}" alt="${tags}" loading="lazy" />
           </a>
@@ -29,8 +28,7 @@ export default function galleryMarkup(data) {
                 <b>Downloads: <br></b><span>${downloads}</span>
               </p>
             </div>
-          </div>
-        `
+          </div>`
     )
     .join('');
 }
