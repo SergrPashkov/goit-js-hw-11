@@ -84,7 +84,7 @@ async function loadNextPage() {
 			page_n += 1;
 			photoSearchApi = await photoSearch(nameSearch, page_n);
 		const photoSearchApiArrey = photoSearchApi.hits;
-		imgup = await galleryMarkup(photoSearchApiArrey);
+		let imgup = await galleryMarkup(photoSearchApiArrey);
 		refs.container.insertAdjacentHTML('beforeend', imgup);
 		observer.observe(refs.loadMoreBtn);
 
